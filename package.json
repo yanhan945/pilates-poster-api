@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "npx puppeteer browsers install chrome && node server-v2.js"
+}
   "keywords": [],
   "author": "",
   "license": "ISC",
