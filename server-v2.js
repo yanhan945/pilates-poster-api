@@ -391,10 +391,12 @@ await page.screenshot({
 
   await browser.close();
 
-  res.json({
-  success: true,
-  message: "暖阳橙海报生成成功！",
-  imageUrl: `https://pilates-poster-api.onrender.com/posters/${fileName}`
+   res.json({
+    success: true,
+    message: "暖阳橙海报生成成功！",
+    imageUrl: `https://pilates-poster-api.onrender.com/posters/${fileName}`
+  });
+
 });
 
 app.listen(PORT, () => {
