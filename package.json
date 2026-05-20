@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "npx puppeteer browsers install chrome && node server-v2.js"
-}
+    "start": "npx puppeteer browsers install chrome && node server-v2.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
