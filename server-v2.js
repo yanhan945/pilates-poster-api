@@ -1,8 +1,15 @@
 const express = require("express");
-const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
+
+process.env.PUPPETEER_CACHE_DIR = path.join(
+  __dirname,
+  ".cache",
+  "puppeteer"
+);
+
+const puppeteer = require("puppeteer");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
