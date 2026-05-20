@@ -77,7 +77,6 @@ app.post("/generate", async (req, res) => {
 
  const browser = await puppeteer.launch({
   headless: true,
-  executablePath: "/opt/render/.cache/puppeteer/chrome/linux-148.0.7778.167/chrome-linux64/chrome",
   args: ["--no-sandbox", "--disable-setuid-sandbox"]
 });
   const page = await browser.newPage();
