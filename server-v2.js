@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 app.use("/posters", express.static(path.join(__dirname, "posters")));
+app.use("/fonts", express.static(path.join(__dirname, "node_modules", "@fontsource", "noto-sans-sc", "files")));
 const theme = {
   primary: "#e96f1f",
   primarySoft: "#f7a15f",
@@ -91,12 +92,38 @@ app.post("/generate", async (req, res) => {
   const html = `
   <html>
   <head>
-    <style>
+  
+  <style>
+@font-face {
+  font-family: "Noto Sans SC";
+  src: url("http://localhost:${PORT}/fonts/noto-sans-sc-chinese-simplified-400-normal.woff2") format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Noto Sans SC";
+  src: url("http://localhost:${PORT}/fonts/noto-sans-sc-chinese-simplified-700-normal.woff2") format("woff2");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Noto Sans SC";
+  src: url("http://localhost:${PORT}/fonts/noto-sans-sc-chinese-simplified-900-normal.woff2") format("woff2");
+  font-weight: 900;
+}
+
+
+body {
+  margin: 0;
+  background: ${theme.bg};
+  font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
       body {
-        margin: 0;
-        background: ${theme.bg};
-        font-family: "Microsoft YaHei", sans-serif;
-      }
+  margin: 0;
+  background: ${theme.bg};
+  font-family: "Noto Sans SC", "Microsoft YaHei", sans-serif;
+}
+        
 
       .poster {
         width: 1080px;
@@ -374,7 +401,11 @@ app.post("/generate", async (req, res) => {
     height: 1920
   });
 
-  await page.setContent(html);
+  await page.setContent(html, {
+  waitUntil: "networkidle0"
+});
+
+await page.evaluateHandle("document.fonts.ready");
 const fileName = `poster-${Date.now()}.png`;
 
 const outputPath = path.join(
