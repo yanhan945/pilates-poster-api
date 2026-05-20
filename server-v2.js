@@ -394,8 +394,7 @@ await page.screenshot({
   res.json({
   success: true,
   message: "暖阳橙海报生成成功！",
-  imageUrl: `http://localhost:${PORT}/posters/${fileName}`
-});
+  imageUrl: `https://pilates-poster-api.onrender.com/posters/${fileName}`
 });
 
 app.listen(PORT, () => {
