@@ -62,7 +62,7 @@ const themes = {
     capsuleBg: "#f3f0eb",
     capsuleText: "#8a837c"
   },
-  
+
   obsidianBlack: {
   name: "曜石黑",
   base: "#2B2B2F",
@@ -80,17 +80,17 @@ const themes = {
 
 lakeBlue: {
   name: "静海蓝",
-  base: "#4E8FA8",
-  primarySoft: "#7EB4C8",
-  bg: "#F3F7F9",
+  base: "#5AAFC7",
+  primarySoft: "#8ED0DF",
+  bg: "#F2F8FA",
   card: "#FFFFFF",
   text: "#25313A",
   muted: "#7F8A95",
-  line: "#D8E6EC",
+  line: "#D8EAF0",
   noteBg: "#F5EFE6",
-  summaryAccent: "#4E8FA8",
-  capsuleBg: "#EEF3F6",
-  capsuleText: "#7C878E"
+  summaryAccent: "#4E9DB5",
+  capsuleBg: "#EEF5F7",
+  capsuleText: "#7A8890"
 }
 };
 
