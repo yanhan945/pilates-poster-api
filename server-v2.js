@@ -422,11 +422,23 @@ body {
 }
 
       .section-title {
-        font-size: 40px;
-        font-weight: 850;
-        color: ${theme.text};
-        margin-bottom: 42px;
-      }
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 34px;
+}
+
+.section-title-main {
+  font-size: 40px;
+  font-weight: 850;
+  color: ${theme.text};
+}
+
+.section-title-theme {
+  font-size: 34px;
+  font-weight: 600;
+  color: ${theme.muted};
+}
 
       .action {
         position: relative;
@@ -606,6 +618,7 @@ body {
     <div class="poster">
 
       <div class="header">
+      <div style="font-size: 28px; color: yellow;">TEST-NEW-HEADER</div>
   <div class="header-meta">
   <div class="meta-line">
     <span class="meta-icon">${calendarIconSvg}</span>
@@ -631,8 +644,10 @@ body {
 </div>
 
       <div class="main-card">
-        <div class="section-title">训练内容：${data.courseTheme}</div>
-
+        <div class="section-title">
+  <span class="section-title-main">训练内容：</span>
+  <span class="section-title-theme">${data.courseTheme}</span>
+</div>
         ${data.actions.map((action, index) => `
           <div class="action">
             <div class="axis">
