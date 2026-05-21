@@ -81,6 +81,10 @@ app.get("/", (req, res) => {
 
 app.post("/generate", async (req, res) => {
   const data = req.body;
+// 过滤掉天气字段里可能携带的 Emoji 表情，只保留文字
+if (data.weather) {
+  data.weather = data.weather.replace(/[\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF]/g, '').trim();
+}
   const logoDataUrl = getLogoDataUrl();
 
  const browser = await puppeteer.launch({
