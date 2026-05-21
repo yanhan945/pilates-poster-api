@@ -187,16 +187,18 @@ body {
   width: 1080px;
   min-height: 1920px;
   box-sizing: border-box;
-  background: linear-gradient(180deg, #E86A14 0%, #F29A4A 100%);
+  background: #f8f2ec;
   padding: 0 44px 70px;
 }
 
       .header {
   color: white;
-  padding: 42px 26px 150px;
+  margin: 0 -44px 0;
+  padding: 56px 72px 170px;
   position: relative;
-  border-bottom-left-radius: 34px;
-border-bottom-right-radius: 34px;
+  background: linear-gradient(180deg, #e95f0c 0%, #f79445 100%);
+  border-bottom-left-radius: 48px;
+  border-bottom-right-radius: 48px;
 }
 
 .header-meta {
@@ -217,14 +219,14 @@ border-bottom-right-radius: 34px;
 }
 
 .header-name {
-  font-size: 66px;
+  font-size: 68px;
   font-weight: 900;
   line-height: 1.05;
   white-space: nowrap;
 }
 
 .header-plan {
-  font-size: 48px;
+  font-size: 50px;
   font-weight: 850;
   line-height: 1.1;
   flex: 1;
@@ -233,7 +235,7 @@ border-bottom-right-radius: 34px;
 }
 
 .header-lesson {
-  font-size: 54px;
+  font-size: 56px;
   font-weight: 900;
   line-height: 1.05;
   white-space: nowrap;
@@ -276,7 +278,7 @@ border-bottom-right-radius: 34px;
       }
 
       .main-card {
-  margin-top: -112px;
+  margin-top: -86px;
   background: white;
   border-radius: 42px;
   padding: 44px;
