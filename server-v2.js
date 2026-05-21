@@ -186,9 +186,36 @@ body {
       }
 
       .header {
-        color: white;
-        padding: 12px 20px 34px;
-      }
+  color: white;
+  padding: 28px 22px 86px;
+  position: relative;
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 27px;
+  line-height: 1.4;
+  opacity: 0.92;
+  margin-bottom: 18px;
+}
+
+.header-title {
+  font-size: 42px;
+  line-height: 1.25;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.header-underline {
+  width: 82px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.38);
+  margin-top: 12px;
+}
 
       .header-top {
         display: flex;
@@ -219,12 +246,14 @@ body {
       }
 
       .main-card {
-        margin-top: 36px;
-        background: white;
-        border-radius: 42px;
-        padding: 44px;
-        box-shadow: 0 20px 50px rgba(80,62,42,0.06);
-      }
+  margin-top: -48px;
+  background: white;
+  border-radius: 42px;
+  padding: 44px;
+  box-shadow: 0 20px 50px rgba(80,62,42,0.06);
+  position: relative;
+  z-index: 2;
+}
 
       .section-title {
         font-size: 40px;
@@ -394,15 +423,18 @@ body {
     <div class="poster">
 
       <div class="header">
-        <div class="header-top">
-          <div>
-            <div class="student">${data.studentName}</div>
-            <div class="meta">${data.date} · ${weatherText}</div>
-          </div>
+  <div class="header-meta">
+    <span>${data.date}</span>
+    <span>·</span>
+    <span>${weatherText}</span>
+  </div>
 
-          <div class="lesson-pill">${data.lessonNumber}</div>
-        </div>
-      </div>
+  <div class="header-title">
+    ${data.studentName} 普拉提训练计划 · ${data.lessonNumber}
+  </div>
+
+  <div class="header-underline"></div>
+</div>
 
       <div class="main-card">
         <div class="section-title">训练内容：${data.courseTheme}</div>
