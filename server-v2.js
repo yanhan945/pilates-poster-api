@@ -139,6 +139,61 @@ function normalizeWeather(value) {
 }
 
 const weatherText = normalizeWeather(data.weather);
+
+const calendarIconSvg = `
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3.5" y="5.5" width="17" height="15" rx="3" stroke="currentColor" stroke-width="1.8"/>
+    <path d="M7.5 3.5V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M16.5 3.5V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M3.5 9.5H20.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </svg>
+`;
+
+const weatherIconSvg = weatherText.includes("雪")
+  ? `
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 3v18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M4.5 7.5 19.5 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M19.5 7.5 4.5 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  `
+  : weatherText.includes("雨")
+  ? `
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 15a4 4 0 1 1 .8-7.92A5 5 0 0 1 17 9a3 3 0 1 1 0 6H7Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9 18l-1 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M13 18l-1 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M17 18l-1 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  `
+  : weatherText.includes("云") || weatherText.includes("阴")
+  ? `
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 17a4 4 0 1 1 .8-7.92A5 5 0 0 1 17 11a3 3 0 1 1 0 6H7Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  `
+  : `
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M12 2.5V5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M12 19v2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M21.5 12H19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M5 12H2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M18.72 5.28 17 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M7 17 5.28 18.72" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M18.72 18.72 17 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M7 7 5.28 5.28" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+  `;
+
+const summaryIconSvg = `
+  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M10 21h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M8.5 14.5c-1.6-1.1-2.5-2.8-2.5-4.8a6 6 0 1 1 12 0c0 2-.9 3.7-2.5 4.8-.8.6-1.2 1.2-1.4 2H9.9c-.2-.8-.6-1.4-1.4-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+  </svg>
+`;
+
 const logoDataUrl = getLogoDataUrl();
 
 const browser = await puppeteer.launch({
@@ -209,6 +264,32 @@ body {
   line-height: 1.4;
   opacity: 0.95;
   margin-bottom: 18px;
+}
+  .meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meta-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.meta-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.meta-dot {
+  opacity: 0.65;
+  margin: 0 2px;
 }
 
 .meta-icon {
@@ -406,14 +487,19 @@ body {
   color: #e86a14;
 }
   .summary-icon {
+  width: 32px;
+  height: 32px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  font-size: 31px;
-  line-height: 1;
   color: #e86a14;
+  flex-shrink: 0;
+}
+
+.summary-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
       .summary-text {
@@ -479,9 +565,17 @@ body {
 
       <div class="header">
   <div class="header-meta">
-  <span>${data.date}</span>
-  <span>·</span>
-  <span>${weatherText}</span>
+  <div class="meta-item">
+    <span class="meta-icon">${calendarIconSvg}</span>
+    <span>${data.date}</span>
+  </div>
+
+  <div class="meta-dot">·</div>
+
+  <div class="meta-item">
+    <span class="meta-icon">${weatherIconSvg}</span>
+    <span>${weatherText}</span>
+  </div>
 </div>
 
   <div class="header-title-row">
@@ -518,7 +612,7 @@ body {
 
       <div class="summary">
         <div class="summary-title">
-  <span class="summary-icon">✦</span>
+  <span class="summary-icon">${summaryIconSvg}</span>
   <span>课后总结</span>
 </div>
         <div class="summary-text">${data.summary}</div>
