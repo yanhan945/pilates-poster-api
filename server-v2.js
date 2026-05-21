@@ -187,7 +187,7 @@ body {
 
       .header {
   color: white;
-  padding: 28px 22px 86px;
+  padding: 38px 22px 118px;
   position: relative;
 }
 
@@ -201,11 +201,33 @@ body {
   margin-bottom: 18px;
 }
 
-.header-title {
+.header-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.header-name {
+  font-size: 58px;
+  font-weight: 900;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.header-plan {
   font-size: 42px;
-  line-height: 1.25;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  line-height: 1.15;
+  flex: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.header-lesson {
+  font-size: 46px;
+  font-weight: 900;
+  line-height: 1.1;
   white-space: nowrap;
 }
 
@@ -246,7 +268,7 @@ body {
       }
 
       .main-card {
-  margin-top: -48px;
+  margin-top: -82px;
   background: white;
   border-radius: 42px;
   padding: 44px;
@@ -429,9 +451,11 @@ body {
     <span>${weatherText}</span>
   </div>
 
-  <div class="header-title">
-    ${data.studentName} 普拉提训练计划 · ${data.lessonNumber}
-  </div>
+  <div class="header-title-row">
+  <span class="header-name">${data.studentName}</span>
+  <span class="header-plan">普拉提训练计划</span>
+  <span class="header-lesson">${data.lessonNumber}</span>
+</div>
 
   <div class="header-underline"></div>
 </div>
