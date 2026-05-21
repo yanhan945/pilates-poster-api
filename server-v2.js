@@ -18,8 +18,14 @@ app.use(cors());
 app.use("/posters", express.static(path.join(__dirname, "posters")));
 app.use("/fonts", express.static(path.join(__dirname, "node_modules", "@fontsource", "noto-sans-sc", "files")));
 const theme = {
-  primary: "#e96f1f",
-  primarySoft: "#f7a15f",
+ primary: "#E86A14",
+primarySoft: "#F29A4A",
+background: "#F8F2EC",
+card: "#FFFFFF",
+text: "#25313A",
+muted: "#7C8A96",
+line: "#F1D8C5",
+noteBg: "#F5EBDD",
   bg: "#fff5ec",
   card: "#ffffff",
   text: "#25313a",
@@ -178,26 +184,28 @@ body {
         
 
       .poster {
-        width: 1080px;
-        min-height: 1920px;
-        box-sizing: border-box;
-        background: linear-gradient(180deg, ${theme.primary} 0px, ${theme.primarySoft} 230px, ${theme.bg} 470px);
-        padding: 54px 48px 70px;
-      }
+  width: 1080px;
+  min-height: 1920px;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #E86A14 0%, #F29A4A 100%);
+  padding: 0 44px 70px;
+}
 
       .header {
   color: white;
-  padding: 38px 22px 118px;
+  padding: 42px 26px 150px;
   position: relative;
+  border-bottom-left-radius: 34px;
+border-bottom-right-radius: 34px;
 }
 
 .header-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 27px;
+  gap: 14px;
+  font-size: 30px;
   line-height: 1.4;
-  opacity: 0.92;
+  opacity: 0.95;
   margin-bottom: 18px;
 }
 
@@ -209,34 +217,34 @@ body {
 }
 
 .header-name {
-  font-size: 58px;
+  font-size: 66px;
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.05;
   white-space: nowrap;
 }
 
 .header-plan {
-  font-size: 42px;
-  font-weight: 800;
-  line-height: 1.15;
+  font-size: 48px;
+  font-weight: 850;
+  line-height: 1.1;
   flex: 1;
   text-align: center;
   white-space: nowrap;
 }
 
 .header-lesson {
-  font-size: 46px;
+  font-size: 54px;
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.05;
   white-space: nowrap;
 }
 
 .header-underline {
-  width: 82px;
-  height: 7px;
+  width: 86px;
+  height: 8px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.38);
-  margin-top: 12px;
+  background: rgba(255, 255, 255, 0.42);
+  margin-top: 14px;
 }
 
       .header-top {
@@ -268,7 +276,7 @@ body {
       }
 
       .main-card {
-  margin-top: -82px;
+  margin-top: -112px;
   background: white;
   border-radius: 42px;
   padding: 44px;
