@@ -17,22 +17,54 @@ app.use(express.json());
 app.use(cors());
 app.use("/posters", express.static(path.join(__dirname, "posters")));
 app.use("/fonts", express.static(path.join(__dirname, "node_modules", "@fontsource", "noto-sans-sc", "files")));
-const theme = {
- primary: "#E86A14",
-primarySoft: "#F29A4A",
-background: "#F8F2EC",
-card: "#FFFFFF",
-text: "#25313A",
-muted: "#7C8A96",
-line: "#F1D8C5",
-noteBg: "#F5EBDD",
-  bg: "#fff5ec",
-  card: "#ffffff",
-  text: "#25313a",
-  subtext: "#7b8790",
-  line: "#f2d6bf",
-  commentBg: "#fff3e5"
+const themes = {
+  vitalityOrange: {
+    name: "活力橙",
+    base: "#ea6a13",
+    primarySoft: "#f59a4a",
+    bg: "#f7efe8",
+    card: "#ffffff",
+    text: "#25313a",
+    muted: "#7f8a95",
+    line: "#f2d7c2",
+    noteBg: "#f8eee1",
+    summaryAccent: "#e86a14",
+    capsuleBg: "#f4efeb",
+    capsuleText: "#8d847d"
+  },
+
+  freshGreen: {
+    name: "清新绿",
+    base: "#18a79b",
+    primarySoft: "#49c2b8",
+    bg: "#f3f7f6",
+    card: "#ffffff",
+    text: "#25313a",
+    muted: "#7f8a95",
+    line: "#d6ebe7",
+    noteBg: "#f5f0de",
+    summaryAccent: "#18a79b",
+    capsuleBg: "#eef5f3",
+    capsuleText: "#7d8784"
+  },
+
+  softLightWhite: {
+    name: "柔光白",
+    base: "#d8c3ab",
+    primarySoft: "#eee3d6",
+    bg: "#f8f6f2",
+    card: "#ffffff",
+    text: "#25313a",
+    muted: "#7f8a95",
+    line: "#e9dfd4",
+    noteBg: "#f7efe6",
+    summaryAccent: "#c7a98a",
+    capsuleBg: "#f3f0eb",
+    capsuleText: "#8a837c"
+  }
 };
+
+const theme = themes[data.posterTheme] || themes.vitalityOrange;
 
 function getLogoDataUrl() {
   const logoPath = path.join(__dirname, "logo.jpg");
@@ -251,7 +283,7 @@ body {
   margin: 0 -44px 0;
   padding: 52px 72px 190px;
   position: relative;
-  background: linear-gradient(180deg, #e95f0c 0%, #f79445 100%);
+  background: linear-gradient(180deg, ${theme.base} 0%, ${theme.primarySoft} 100%);
   border-bottom-left-radius: 48px;
   border-bottom-right-radius: 48px;
 }
@@ -540,7 +572,7 @@ body {
   gap: 12px;
   font-size: 40px;
   font-weight: 850;
-  color: #e86a14;
+  color: ${theme.summaryAccent};
 }
   .summary-icon {
   width: 32px;
@@ -548,7 +580,7 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: #e86a14;
+  color: ${theme.summaryAccent};
   flex-shrink: 0;
 }
 
