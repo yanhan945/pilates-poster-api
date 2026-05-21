@@ -343,11 +343,13 @@ body {
   gap: 24px;
 }
 
-..header-name {
-  font-size: 68px;
+.header-name {
+  display: inline-block;
+  font-size: 72px;
   font-weight: 900;
   line-height: 1.05;
   white-space: nowrap;
+  letter-spacing: -1px;
 }
 
 .header-plan {
@@ -618,7 +620,7 @@ body {
     <div class="poster">
 
       <div class="header">
-      <div style="font-size: 28px; color: yellow;">TEST-NEW-HEADER</div>
+      
   <div class="header-meta">
   <div class="meta-line">
     <span class="meta-icon">${calendarIconSvg}</span>
