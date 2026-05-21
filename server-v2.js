@@ -64,7 +64,7 @@ const themes = {
   }
 };
 
-const theme = themes[data.posterTheme] || themes.vitalityOrange;
+
 
 function getLogoDataUrl() {
   const logoPath = path.join(__dirname, "logo.jpg");
@@ -119,6 +119,8 @@ app.get("/", (req, res) => {
 
 app.post("/generate", async (req, res) => {
  const data = req.body;
+ 
+ const theme = themes[data.posterTheme] || themes.vitalityOrange;
 
 function normalizeWeather(value) {
   const text = String(value || "").trim();
