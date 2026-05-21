@@ -211,6 +211,17 @@ body {
   margin-bottom: 18px;
 }
 
+.meta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 25px;
+  line-height: 1;
+  opacity: 0.95;
+}
+
 .header-title-row {
   display: flex;
   align-items: baseline;
@@ -387,11 +398,23 @@ body {
       }
 
       .summary-title {
-        font-size: 34px;
-        font-weight: 850;
-        color: ${theme.primary};
-        margin-bottom: 18px;
-      }
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 40px;
+  font-weight: 850;
+  color: #e86a14;
+}
+  .summary-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 31px;
+  line-height: 1;
+  color: #e86a14;
+}
 
       .summary-text {
         font-size: 32px;
@@ -456,10 +479,10 @@ body {
 
       <div class="header">
   <div class="header-meta">
-    <span>${data.date}</span>
-    <span>·</span>
-    <span>${weatherText}</span>
-  </div>
+  <span>${data.date}</span>
+  <span>·</span>
+  <span>${weatherText}</span>
+</div>
 
   <div class="header-title-row">
   <span class="header-name">${data.studentName}</span>
@@ -494,7 +517,10 @@ body {
       </div>
 
       <div class="summary">
-        <div class="summary-title">课后总结</div>
+        <div class="summary-title">
+  <span class="summary-icon">✦</span>
+  <span>课后总结</span>
+</div>
         <div class="summary-text">${data.summary}</div>
       </div>
 
