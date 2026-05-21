@@ -34,19 +34,19 @@ const themes = {
   },
 
   freshGreen: {
-    name: "清新绿",
-    base: "#18a79b",
-    primarySoft: "#49c2b8",
-    bg: "#f3f7f6",
-    card: "#ffffff",
-    text: "#25313a",
-    muted: "#7f8a95",
-    line: "#d6ebe7",
-    noteBg: "#f5f0de",
-    summaryAccent: "#18a79b",
-    capsuleBg: "#eef5f3",
-    capsuleText: "#7d8784"
-  },
+  name: "清新绿",
+  base: "#159C91",
+  primarySoft: "#59C6BB",
+  bg: "#F2F7F5",
+  card: "#FFFFFF",
+  text: "#25313A",
+  muted: "#7F8A95",
+  line: "#D3E9E5",
+  noteBg: "#F5F0DE",
+  summaryAccent: "#159C91",
+  capsuleBg: "#EEF5F3",
+  capsuleText: "#7D8784"
+},
 
   softLightWhite: {
     name: "柔光白",
@@ -61,7 +61,37 @@ const themes = {
     summaryAccent: "#c7a98a",
     capsuleBg: "#f3f0eb",
     capsuleText: "#8a837c"
-  }
+  },
+  
+  obsidianBlack: {
+  name: "曜石黑",
+  base: "#2B2B2F",
+  primarySoft: "#4A4A50",
+  bg: "#F3F1EE",
+  card: "#FFFFFF",
+  text: "#25313A",
+  muted: "#7F8A95",
+  line: "#DDD8D2",
+  noteBg: "#F4EEE7",
+  summaryAccent: "#2B2B2F",
+  capsuleBg: "#F1EFEC",
+  capsuleText: "#7E7770"
+},
+
+lakeBlue: {
+  name: "静海蓝",
+  base: "#4E8FA8",
+  primarySoft: "#7EB4C8",
+  bg: "#F3F7F9",
+  card: "#FFFFFF",
+  text: "#25313A",
+  muted: "#7F8A95",
+  line: "#D8E6EC",
+  noteBg: "#F5EFE6",
+  summaryAccent: "#4E8FA8",
+  capsuleBg: "#EEF3F6",
+  capsuleText: "#7C878E"
+}
 };
 
 
@@ -119,7 +149,7 @@ app.get("/", (req, res) => {
 
 app.post("/generate", async (req, res) => {
  const data = req.body;
- 
+
  const theme = themes[data.posterTheme] || themes.vitalityOrange;
 
 function normalizeWeather(value) {
