@@ -454,7 +454,8 @@ body {
   });
 
   await page.setContent(html, {
-  waitUntil: "networkidle0"
+  waitUntil: "domcontentloaded",
+  timeout: 120000
 });
 
 await page.evaluateHandle("document.fonts.ready");
