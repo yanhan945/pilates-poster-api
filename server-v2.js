@@ -249,7 +249,7 @@ body {
       .header {
   color: white;
   margin: 0 -44px 0;
-  padding: 56px 72px 170px;
+  padding: 52px 72px 190px;
   position: relative;
   background: linear-gradient(180deg, #e95f0c 0%, #f79445 100%);
   border-bottom-left-radius: 48px;
@@ -258,12 +258,45 @@ body {
 
 .header-meta {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 32px;
+  line-height: 1.35;
+  opacity: 0.96;
+  margin-bottom: 24px;
+}
+  .meta-line {
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-  font-size: 30px;
-  line-height: 1.4;
-  opacity: 0.95;
-  margin-bottom: 18px;
+  gap: 8px;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.meta-icon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.meta-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.meta-dot {
+  opacity: 0.65;
+  margin: 0 2px;
 }
   .meta-item {
   display: inline-flex;
@@ -305,12 +338,12 @@ body {
 
 .header-title-row {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 18px;
+  gap: 24px;
 }
 
-.header-name {
+..header-name {
   font-size: 68px;
   font-weight: 900;
   line-height: 1.05;
@@ -320,10 +353,11 @@ body {
 .header-plan {
   font-size: 50px;
   font-weight: 850;
-  line-height: 1.1;
+  line-height: 1.12;
   flex: 1;
   text-align: center;
   white-space: nowrap;
+  padding-top: 6px;
 }
 
 .header-lesson {
@@ -331,14 +365,22 @@ body {
   font-weight: 900;
   line-height: 1.05;
   white-space: nowrap;
+  padding-top: 4px;
 }
 
 .header-underline {
-  width: 86px;
+  width: 100%;
   height: 8px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.42);
-  margin-top: 14px;
+  margin-top: 10px;
+}
+  .header-name-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: fit-content;
+  flex-shrink: 0;
 }
 
       .header-top {
@@ -370,7 +412,7 @@ body {
       }
 
       .main-card {
-  margin-top: -86px;
+  margin-top: -96px;
   background: white;
   border-radius: 42px;
   padding: 44px;
@@ -565,26 +607,27 @@ body {
 
       <div class="header">
   <div class="header-meta">
-  <div class="meta-item">
+  <div class="meta-line">
     <span class="meta-icon">${calendarIconSvg}</span>
     <span>${data.date}</span>
   </div>
 
-  <div class="meta-dot">·</div>
-
-  <div class="meta-item">
+  <div class="meta-line">
     <span class="meta-icon">${weatherIconSvg}</span>
     <span>${weatherText}</span>
   </div>
 </div>
 
-  <div class="header-title-row">
-  <span class="header-name">${data.studentName}</span>
+<div class="header-title-row">
+  <div class="header-name-wrap">
+    <span class="header-name">${data.studentName}</span>
+    <div class="header-underline"></div>
+  </div>
+
   <span class="header-plan">普拉提训练计划</span>
   <span class="header-lesson">${data.lessonNumber}</span>
 </div>
-
-  <div class="header-underline"></div>
+  
 </div>
 
       <div class="main-card">
