@@ -80,14 +80,62 @@ app.get("/", (req, res) => {
 });
 
 app.post("/generate", async (req, res) => {
-  const data = req.body;
-// 过滤掉天气字段里可能携带的 Emoji 表情，只保留文字
-if (data.weather) {
-  data.weather = data.weather.replace(/[\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF]/g, '').trim();
-}
-  const logoDataUrl = getLogoDataUrl();
+ const data = req.body;
 
- const browser = await puppeteer.launch({
+function normalizeWeather(value) {
+  const text = String(value || "").trim();
+
+  if (!text) return "晴";
+
+  if (
+    text.includes("晴") ||
+    text.includes("☀") ||
+    text.toLowerCase().includes("sunny") ||
+    text.toLowerCase().includes("sun")
+  ) {
+    return "晴";
+  }
+
+  if (
+    text.includes("阴") ||
+    text.toLowerCase().includes("overcast")
+  ) {
+    return "阴";
+  }
+
+  if (
+    text.includes("多云") ||
+    text.includes("云") ||
+    text.includes("☁") ||
+    text.toLowerCase().includes("cloud")
+  ) {
+    return "多云";
+  }
+
+  if (
+    text.includes("小雨") ||
+    text.includes("light_rain") ||
+    text.toLowerCase().includes("light rain")
+  ) {
+    return "小雨";
+  }
+
+  if (
+    text.includes("雨") ||
+    text.includes("🌧") ||
+    text.includes("☔") ||
+    text.toLowerCase().includes("rain")
+  ) {
+    return "雨";
+  }
+
+  return text.replace(/[^\u4e00-\u9fa5a-zA-Z0-9\s]/g, "").trim() || "晴";
+}
+
+const weatherText = normalizeWeather(data.weather);
+const logoDataUrl = getLogoDataUrl();
+
+const browser = await puppeteer.launch({
   headless: true,
   args: ["--no-sandbox", "--disable-setuid-sandbox"]
 });
@@ -349,7 +397,7 @@ body {
         <div class="header-top">
           <div>
             <div class="student">${data.studentName}</div>
-            <div class="meta">${data.date} · ${data.weather}</div>
+            <div class="meta">${data.date} · ${weatherText}</div>
           </div>
 
           <div class="lesson-pill">${data.lessonNumber}</div>
