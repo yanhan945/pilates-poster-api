@@ -769,7 +769,28 @@ body {
 });
 
 await page.evaluateHandle("document.fonts.ready");
-const fileName = `poster-${Date.now()}.png`;
+const safeName = String(data.studentNameSlug || data.studentName || "student")
+  .trim()
+  .toLowerCase()
+  .replace(/\s+/g, "-")
+  .replace(/[^a-z0-9\u4e00-\u9fa5-]/g, "")
+  .replace(/-+/g, "-")
+  .replace(/^-|-$/g, "");
+
+const lessonNum = String(data.lessonNumber || "")
+  .match(/\d+/)?.[0] || "0";
+
+const now = new Date();
+const timeStamp = [
+  now.getFullYear(),
+  String(now.getMonth() + 1).padStart(2, "0"),
+  String(now.getDate()).padStart(2, "0")
+].join("") + "-" + [
+  String(now.getHours()).padStart(2, "0"),
+  String(now.getMinutes()).padStart(2, "0")
+].join("");
+
+const fileName = `${safeName || "student"}-lesson${lessonNum}-${timeStamp}.png`;
 
 const outputPath = path.join(
   __dirname,
