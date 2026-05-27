@@ -258,7 +258,7 @@ const summaryIconSvg = `
   </svg>
 `;
 
-const logoDataUrl = getLogoDataUrl();
+const logoDataUrl = data.logo || getLogoDataUrl();
 
 const browser = await puppeteer.launch({
   headless: true,
